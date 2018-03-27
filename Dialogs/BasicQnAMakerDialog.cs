@@ -6,6 +6,7 @@ using Microsoft.Bot.Builder.Azure;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.CognitiveServices.QnAMaker;
 using Microsoft.Bot.Connector;
+using System.Configuration;
 
 namespace Microsoft.Bot.Sample.QnABot
 {
@@ -25,11 +26,14 @@ namespace Microsoft.Bot.Sample.QnABot
             *  await the result. */
             var message = await result;
             
-            var qnaSubscriptionKey = Utils.GetAppSetting("QnASubscriptionKey");
-            var qnaKBId = Utils.GetAppSetting("QnAKnowledgebaseId");
+            //var qnaSubscriptionKey = Utils.GetAppSetting("QnASubscriptionKey");
+            //var qnaKBId = Utils.GetAppSetting("QnAKnowledgebaseId");
 
-            // QnA Subscription Key and KnowledgeBase Id null verification
-            if (!string.IsNullOrEmpty(qnaSubscriptionKey) && !string.IsNullOrEmpty(qnaKBId))
+			var qnaSubscriptionKey = ConfigurationManager.AppSettings["QnASubscriptionKey"];
+			var qnaKBId = ConfigurationManager.AppSettings["QnAKnowledgebaseId"];
+
+			// QnA Subscription Key and KnowledgeBase Id null verification
+			if (!string.IsNullOrEmpty(qnaSubscriptionKey) && !string.IsNullOrEmpty(qnaKBId))
             {
                 await context.Forward(new BasicQnAMakerDialog(), AfterAnswerAsync, message, CancellationToken.None);
             }
