@@ -62,7 +62,7 @@ namespace Microsoft.Bot.Sample.QnABot
 		//public BasicQnAMakerDialog() : base(new QnAMakerService(new QnAMakerAttribute(Utils.GetAppSetting("QnASubscriptionKey"), Utils.GetAppSetting("QnAKnowledgebaseId"), "Could not find the answer.", 0.5)))
 		//{}
 
-		public BasicQnAMakerDialog() : base(new QnAMakerService(new QnAMakerAttribute(ConfigurationManager.AppSettings["QnASubscriptionKey"], ConfigurationManager.AppSettings["QnAKnowledgebaseId"], "Could not find the answer.", 0.5)))
+		public BasicQnAMakerDialog() : base(new QnAMakerService(new QnAMakerAttribute(ConfigurationManager.AppSettings["QnASubscriptionKey"], ConfigurationManager.AppSettings["QnAKnowledgebaseId"], "I don't know the answer, please call ZD!.", 0.7)))
 		{ }
 
 	}
