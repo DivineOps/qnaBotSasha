@@ -55,11 +55,15 @@ namespace Microsoft.Bot.Sample.QnABot
     [Serializable]
     public class BasicQnAMakerDialog : QnAMakerDialog
     {
-        // Go to https://qnamaker.ai and feed data, train & publish your QnA Knowledgebase.        
-        // Parameters to QnAMakerService are:
-        // Required: subscriptionKey, knowledgebaseId, 
-        // Optional: defaultMessage, scoreThreshold[Range 0.0 – 1.0]
-        public BasicQnAMakerDialog() : base(new QnAMakerService(new QnAMakerAttribute(Utils.GetAppSetting("QnASubscriptionKey"), Utils.GetAppSetting("QnAKnowledgebaseId"), "Could not find the answer.", 0.5)))
-        {}
-    }
+		// Go to https://qnamaker.ai and feed data, train & publish your QnA Knowledgebase.        
+		// Parameters to QnAMakerService are:
+		// Required: subscriptionKey, knowledgebaseId, 
+		// Optional: defaultMessage, scoreThreshold[Range 0.0 – 1.0]
+		//public BasicQnAMakerDialog() : base(new QnAMakerService(new QnAMakerAttribute(Utils.GetAppSetting("QnASubscriptionKey"), Utils.GetAppSetting("QnAKnowledgebaseId"), "Could not find the answer.", 0.5)))
+		//{}
+
+		public BasicQnAMakerDialog() : base(new QnAMakerService(new QnAMakerAttribute(ConfigurationManager.AppSettings["QnASubscriptionKey"], ConfigurationManager.AppSettings["QnAKnowledgebaseId"], "Could not find the answer.", 0.5)))
+		{ }
+
+	}
 }
